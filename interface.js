@@ -3,7 +3,7 @@ $(document).ready(function(){
   var array1 = scorecard.player1
   var array2 = scorecard.player2
   
-  scoreInsert = function () {
+  frameScoreInsert = function () {
     for (i = 1; i <= 2; i++) {
       if (i == 1) {
         for (j = 1; j <= array1.length; j++) { 
@@ -17,15 +17,35 @@ $(document).ready(function(){
   }
   }
 
+    totalScoreInsert = function() {
+      var total1 = 0;
+      var total2 = 0;
+      for (i = 0; i < array1.length; i++) {
+        for (var j = 0; j < array1[i].length; j++) {
+          total1 += array1[i][j];
+        }
+      }
+      for (k = 0; k < array2.length; k++) {
+        for (var l = 0; l < array2[k].length; l++) {
+          total2 += array1[k][l];
+        }
+      }
+      $('#p2total').text(total2)
+      $('#p1total').text(total1)
+    }
+
   $('#score-input').submit(function(event){
     event.preventDefault();
     var player = $('#player-selected').val();
-    var score1 = $('#score1-input').val();
-    var score2 = $('#score2-input').val();
-
-    scorecard.frameAdd(player, score1, score2)
+    var score1 = parseInt($('#score1-input').val());
+    var score2 = parseInt($('#score2-input').val());
     
-    scoreInsert();
-
+    if (score1 + score2 > 10) {
+      $('#error-message').text('Maximum score of 10 allowed')
+    } else {
+      scorecard.frameAdd(player, score1, score2)
+      frameScoreInsert();
+      totalScoreInsert();
+    };
   });
 });

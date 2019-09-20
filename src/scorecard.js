@@ -22,10 +22,6 @@ Scorecard = function() {
   }
 
 
-  // Scorecard.prototype.Sum = function(num1, num2) {
-  //   num1 + num2
-  // }
-
 
     // Scorecard.prototype.addScore = function(score1 = 0, score2 = 0) {
   //   if (score1 == 10) {
