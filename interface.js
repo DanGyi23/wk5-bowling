@@ -27,7 +27,7 @@ $(document).ready(function(){
       }
       for (k = 0; k < array2.length; k++) {
         for (var l = 0; l < array2[k].length; l++) {
-          total2 += array1[k][l];
+          total2 += array2[k][l];
         }
       }
       $('#p2total').text(total2)

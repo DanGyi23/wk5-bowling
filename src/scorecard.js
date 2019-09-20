@@ -5,9 +5,9 @@ Scorecard = function() {
 
 
   Scorecard.prototype.frameAdd = function(player, score1, score2) {
-    if (player == "Player 1") {
+    if (player == "Player 1" && this.player1.length < 10) {
       this.player1.push([score1, score2]);
-    } else {
+    } else if (player == "Player 2" && this.player2.length < 10) {
       this.player2.push([score1, score2]);
     };
     // need to add logic for spares or strikes 
