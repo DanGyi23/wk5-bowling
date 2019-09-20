@@ -15,35 +15,113 @@
     <th>Total</th>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td id ='p1name'>Player1</td>
+    <td id ='p1f1'></td>
+    <td id ='p1f2'></td>
+    <td id ='p1f3'></td>
+    <td id ='p1f4'></td>
+    <td id ='p1f5'></td>
+    <td id ='p1f6'></td>
+    <td id ='p1f7'></td>
+    <td id ='p1f8'></td>
+    <td id ='p1f9'></td>
+    <td id ='p1f10'></td>
+    <td id ='p1total'></td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>Player 1 Cumulative Score</td>
+    <td id='p1c1'></td>
+    <td id='p1c2'></td>
+    <td id='p1c3'></td>
+    <td id='p1c4'></td>
+    <td id='p1c5'></td>
+    <td id='p1c6'></td>
+    <td id='p1c7'></td>
+    <td id='p1c8'></td>
+    <td id='p1c9'></td>
+    <td id='p1c10'></td>
+    <td id='p1ctotal'></td>
   </tr>
+  <tr>
+  </tr>
+    <tr>
+      <td id='p2name'>Player2</td>
+      <td id='p2f1'></td>
+      <td id='p2f2'></td>
+      <td id='p2f3'></td>
+      <td id='p2f4'></td>
+      <td id='p2f5'></td>
+      <td id='p2f6'></td>
+      <td id='p2f7'></td>
+      <td id='p2f8'></td>
+      <td id='p2f9'></td>
+      <td id='p2f10'></td>
+      <td id='p2total'></td>
+    </tr>
+    <tr>
+      <td>Player 2 Cumulative Score</td>
+      <td id='p2c1'></td>
+      <td id='p2c2'></td>
+      <td id='p2c3'></td>
+      <td id='p2c4'></td>
+      <td id='p2c5'></td>
+      <td id='p2c6'></td>
+      <td id='p2c7'></td>
+      <td id='p2c8'></td>
+      <td id='p2c9'></td>
+      <td id='p2c10'></td>
+      <td id='p2ctotal'></td>
+    </tr>
 </table>
+
+<br>
+<br>
+<br>
+<h3> Enter Player Score </h3>
+<form id='score-input'>
+  <select id='player-selected'>
+    <option value='Player 1'>Player1</option>
+    <option value='Player 2'>Player2</option>
+  </select>
+  <br>
+  <br>
+  Score 1st Roll
+  <select id='score1-input'>
+    <option value='0'>0</option>
+    <option value='1'>1</option>
+    <option value='2'>2</option>
+    <option value='3'>3</option>
+    <option value='4'>4</option>
+    <option value='5'>5</option>
+    <option value='6'>6</option>
+    <option value='7'>7</option>
+    <option value='8'>8</option>
+    <option value='9'>9</option>
+    <option value='10'>10</option>
+  </select>
+  <br>
+  <br>
+  Score 2nd Roll
+  <select id='score2-input'>
+    <option value='0'>0</option>
+    <option value='1'>1</option>
+    <option value='2'>2</option>
+    <option value='3'>3</option>
+    <option value='4'>4</option>
+    <option value='5'>5</option>
+    <option value='6'>6</option>
+    <option value='7'>7</option>
+    <option value='8'>8</option>
+    <option value='9'>9</option>
+    <option value='10'>10</option>
+  </select>
+  <br>
+  <br>
+  <input type='submit' name='submit'>
+</form>
+
 </html>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.jss"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="interface.js"></script>
+<script src="src/scorecard.js"></script>
