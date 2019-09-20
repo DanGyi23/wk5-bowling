@@ -30,8 +30,10 @@ $(document).ready(function(){
           total2 += array2[k][l];
         }
       }
-      $('#p2total').text(total2)
+      
       $('#p1total').text(total1)
+      $('#p2total').text(total2)
+      
     }
 
   $('#score-input').submit(function(event){
