@@ -23,8 +23,10 @@ Scorecard = function () {
       if (player._array[i - 1].includes("X") || player._array[i - 1].includes(" /")) {
         player._currentscore += 10
       } else {
-        player._currentscore += player._array[i - 1][j]
+        player._currentscore += player._array[i - 1][0]
+        player._currentscore += player._array[i - 1][1]
       };
+      return player._currentscore
     };
 
     if (i > 1 && i < 9) {
@@ -40,7 +42,7 @@ Scorecard = function () {
         }
         // strike followed by normal
         else if (player._array[i - 2].includes("X") && !player._array[i - 1].includes(" /") && !player._array[i - 1].includes("X")) {
-          player._currentscore += player._array[i][j] * 2
+          player._currentscore += player._array[i - 1][j] * 2
         }
         // spare followed by strike
         else if (player._array[i - 2].includes(" /") && player._array[i - 1].includes("X")) {
@@ -52,7 +54,8 @@ Scorecard = function () {
         }
         // spare followed by normal
         else if (player._array[i - 2].includes(" /") && !player._array[i - 1].includes(" /") && !player._array[i - 1].includes("X")) {
-          player._currentscore += player._array[i][0] * 2
+          player._currentscore += player._array[i - 1][0]
+          player._currentscore += player._array[i - 1][1] / 2
         }
         // normal followed by strike
         else if (!player._array[i - 2].includes(" /") && !player._array[i - 2].includes("X") && player._array[i - 1].includes("X")) {
@@ -64,7 +67,7 @@ Scorecard = function () {
         }
         // normal followed by normal
         else if (!player._array[i - 2].includes(" /") && !player._array[i - 2].includes("X") && !player._array[i - 1].includes(" /") && !player._array[i - 1].includes("X")) {
-          player._currentscore += player._array[i][j]
+          player._currentscore += player._array[i - 1][j]
         }
 
       }
