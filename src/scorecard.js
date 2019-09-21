@@ -20,14 +20,12 @@ Scorecard = function() {
   Scorecard.prototype.scoreTracker = function (player, index) {
     for (i = 0; i < index ; i++) {
       for (j = 0; j < player._array[i].length; j++) {
-        if (index == 1) {
+        if (i == 0) {
           player._currentscore += player._array[i][j]
-          return ""
-        }
-
+        } else {
         // strike followed by strike
         // doesn't like the i - 1 property???
-        if (player._array[i - 1].includes("X") && player._array[i].includes("X")) {
+        if (player._array[(i - 1)].includes("X") && player._array[i].includes("X")) {
 
           player._currentscore += 20
         } 
@@ -65,6 +63,7 @@ Scorecard = function() {
         }
 
     }
+  }
   }
     return player._currentscore
   }
