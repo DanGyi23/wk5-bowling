@@ -6,6 +6,7 @@ describe('Scorecard', function () {
   });
 
   describe('Normal Rolls', function () {
+
     it('lets you enter a score to each frame', function () {
       scorecard.frameAdd(player, 3, 4)
       scorecard.scoreTracker(player, player._array.length)
@@ -64,7 +65,7 @@ describe('Scorecard', function () {
       expect(player._currentscore).toEqual(60)
     })
 
-    it('rolling a perf game gives you 300 points', function() {
+    it('rolling a perf game gives you 300 points', function () {
       for (let i = 0; i < 13; i++) {
         scorecard.frameAdd(player, 10, 0)
         scorecard.scoreTracker(player, player._array.length)
@@ -90,4 +91,21 @@ describe('Scorecard', function () {
       expect(player._currentscore).toEqual(19)
     })
   });
+
+  describe('Final Frame', function () {
+
+    it('allows you to enter 3 scores for frame10', function () {
+      for (let i = 0; i < 9; i++) {
+        scorecard.frameAdd(player, 1, 0)
+        scorecard.scoreTracker(player, player._array.length)
+      }
+      for (let i = 0; i < 3; i++) {
+      scorecard.frameAdd(player, 5, 0)
+      console.log(player._currentscore)
+      scorecard.scoreTracker(player, player._array.length)
+      }
+      expect(player._currentscore).toEqual(24)
+    })
+  });
+
 })
