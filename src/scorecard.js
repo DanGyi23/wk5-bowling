@@ -29,11 +29,13 @@ Scorecard = function () {
       return player._currentscore
     };
 
-    if (i > 1 && i < 9) {
+    if (i > 1 && i < 10) {
       for (j = 0; j < player._array[i - 1].length; j++) {
-
+        // strike followed by strike followed by strike
+        if (i > 2 && player._array[(i - 3)].includes("X") && (player._array[(i - 2)].includes("X")) && (player._array[(i - 1)].includes("X"))) {
+          player._currentscore += 30
         // strike followed by strike
-        if (player._array[(i - 2)].includes("X") && player._array[i - 1].includes("X")) {
+        } else if (player._array[(i - 2)].includes("X") && player._array[i - 1].includes("X")) {
           player._currentscore += 20
         }
         // strike followed by spare
