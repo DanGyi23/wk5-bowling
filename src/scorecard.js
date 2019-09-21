@@ -77,4 +77,12 @@ Scorecard = function () {
     return player._currentscore
   }
 
+  Scorecard.prototype.frameTenAdd = function(player, score1, score2, score3) {
+
+  }
+
+  Scorecard.prototype.frameTenCalc = function(player) {
+    
+  }
+
 }
