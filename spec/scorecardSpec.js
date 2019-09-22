@@ -66,10 +66,12 @@ describe('Scorecard', function () {
     })
 
     it('rolling a perf game gives you 300 points', function () {
-      for (let i = 0; i < 13; i++) {
+      for (let i = 0; i < 9; i++) {
         scorecard.frameAdd(player, 10, 0)
         scorecard.scoreTracker(player, player._array.length)
       }
+      scorecard.frameTenAdd(player, 10, 10, 10)
+      scorecard.frameTenTracker(player)
       expect(player._currentscore).toEqual(300)
     })
 
@@ -99,11 +101,8 @@ describe('Scorecard', function () {
         scorecard.frameAdd(player, 1, 0)
         scorecard.scoreTracker(player, player._array.length)
       }
-      for (let i = 0; i < 3; i++) {
-      scorecard.frameAdd(player, 5, 0)
-      console.log(player._currentscore)
-      scorecard.scoreTracker(player, player._array.length)
-      }
+      scorecard.frameTenAdd(player, 5, 0, 0)
+      scorecard.frameTenTracker(player)
       expect(player._currentscore).toEqual(24)
     })
   });

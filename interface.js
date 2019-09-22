@@ -26,7 +26,8 @@ $(document).ready(function () {
     var score1 = parseInt($('#score1-input').val());
     var score2 = parseInt($('#score2-input').val());
     var score3 = parseInt($('#score3-input').val());
-    if (turncounter < 19) {
+
+    if (turncounter <= 18) {
       if (score1 + score2 > 10) {
         $('#error-message').text('Maximum score of 10 allowed')
       } else {
@@ -46,12 +47,12 @@ $(document).ready(function () {
     } else {
       if (player == "Player 1") {
         scorecard.frameTenAdd(player1, score1, score2, score3)
-        frameScoreInsert();
+        $('#p1f10').text((player1._array[9]))
         var total1 = scorecard.frameTenTracker(player1)
         $('#p1total').text(total1)
       } else {
-        scorecard.frameAdd(player2, score1, score2)
-        frameScoreInsert();
+        scorecard.frameTenAdd(player2, score1, score2, score3)
+        $('#p2f10').text((player1._array[9]))
         var total1 = scorecard.frameTenTracker(player2)
         $('#p2total').text(total2)
       };
