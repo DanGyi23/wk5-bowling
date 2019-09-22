@@ -108,8 +108,7 @@ Scorecard = function () {
     for (j = 0; j < player._array[9].length; j++) {
       // st st
       if (player._array[7].includes("X") && player._array[8].includes("X")) {
-        player._currentscore += 1
-        if (player._array[9] == ["X", "X", "X"]) {
+        if (player._array[9] == ["X","X","X"]) {
           player._currentscore += 60;
         } else if (player._array[9][0] == "X" && player._array[9][1] == "X" && !player._array[9][2] == "X") {
           player._currentscore += 50 + player._array[9][2];
@@ -197,6 +196,8 @@ Scorecard = function () {
         };
       }
     }
+    return player._currentscore
+
   }
 
 }

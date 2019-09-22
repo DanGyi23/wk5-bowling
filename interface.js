@@ -48,13 +48,13 @@ $(document).ready(function () {
       if (player == "Player 1") {
         scorecard.frameTenAdd(player1, score1, score2, score3)
         $('#p1f10').text((player1._array[9]))
-        var total1 = scorecard.frameTenTracker(player1)
-        $('#p1total').text(total1)
+        var total3 = scorecard.frameTenTracker(player1)
+        $('#p1total').text(total3)
       } else {
         scorecard.frameTenAdd(player2, score1, score2, score3)
         $('#p2f10').text((player1._array[9]))
-        var total1 = scorecard.frameTenTracker(player2)
-        $('#p2total').text(total2)
+        var total4 = scorecard.frameTenTracker(player2)
+        $('#p2total').text(total4)
       };
     };
   });
