@@ -1,12 +1,10 @@
 Scorecard = function () {
 
-
   Scorecard.prototype.frameAdd = function (player, score1, score2) {
     if (player._array.length < 9) {
       if (score1 + score2 != 10) {
         player._array.push([score1, score2]);
       }
-
 
       if (score1 + score2 == 10 && score1 != 10) {
         player._array.push([score1, " /"])
@@ -34,7 +32,7 @@ Scorecard = function () {
         // strike followed by strike followed by strike
         if (i > 2 && player._array[(i - 3)].includes("X") && (player._array[(i - 2)].includes("X")) && (player._array[(i - 1)].includes("X"))) {
           player._currentscore += 30
-        // strike followed by strike
+          // strike followed by strike
         } else if (player._array[(i - 2)].includes("X") && player._array[i - 1].includes("X")) {
           player._currentscore += 20
         }
@@ -77,7 +75,7 @@ Scorecard = function () {
     return player._currentscore
   }
 
-  Scorecard.prototype.frameTenAdd = function(player, score1, score2, score3) {
+  Scorecard.prototype.frameTenAdd = function (player, score1, score2, score3) {
     if (player._array.length == 9) {
       if (score1 + score2 < 10) {
         player._array.push([score1, score2]);
@@ -100,32 +98,101 @@ Scorecard = function () {
     };
   }
 
-  Scorecard.prototype.frameTenCalc = function(player, i) {
+  Scorecard.prototype.frameTenTracker = function (player) {
     if (i == 10) {
-      if (player._array[(i - 3)].includes("X") && player._array[i - 2].includes("X")) {
-    // st st
-    
-    // normal (score 1x3 + score 2x2)
-    // spare then normal (20 + score1 + score3)
-    // spare then strike (30 + score 2)
-    // strike then normal (30 + 2x score 2 + score 3)
-    // strike then spare (40 + score 2)
-    // strike strike normal (50 + normal)
-    // strike strike strike (60)
-      } else if (player._array[(i - 3)].includes("X") && player._array[i - 2].includes(" /")) {
-        // st sp
-      } else if (!player._array[(i - 3)].includes("X") && player._array[i - 2].includes("X")) {
-        //norm st
-        //sp st
-      } else if (player._array[(i - 2)].includes(" /") || (player._array[(i - 3)].includes("X") && !player._array[i - 2].includes(" /") && !player._array[i - 2].includes("X"))) {
-        // norm sp
-        // sp sp
-        // st norm
-      } else if (!player._array[(i - 3)].includes(" /") && !player._array[(i - 3)].includes("X") && player._array[i - 2].includes(" /") && player._array[i - 2].includes("X")) {
-        //norm norm
+      for (j = 0; j < player._array[9].length; j++) {
+          // st st
+        if (player._array[(i - 3)].includes("X") && player._array[i - 2].includes("X")) {
+          player._currentscore += 1
+          if (player._array[9] == ["X", "X", "X"]) {
+            player._currentscore += 60;
+          } else if (player._array[9][0] == "X" && player._array[9][1] == "X" && !player._array[9][2] == "X") {
+            player._currentscore += 50 + player._array[9][2];
+          } else if (player._array[9][1] == " /" && player._array[9][2] == "X") {
+            player._currentscore += 30 + player._array[9][0];
+          } else if (player._array[9][0] == "X" && player._array[9][2] == " /") {
+            player._currentscore += 40 + player._array[9][1]
+          } else if (player._array[9][0] == "X" && !player._array[9][1] == "X" && !player._array[9][2] == " /" && !player._array[9][2] == "X") {
+            player._currentscore += 30 + (player._array[9][1] * 2) + player._array[9][2]
+          } else if (player._array[9][1] == " /" && !player._array[9][2] == "X") {
+            player._currentscore += 20 + player._array[9][0] + player._array[9][2] 
+          } else {
+            player._currentscore += player._array[9][0] * 3 + player._array[9][1] * 2
+          };
+        } else if (player._array[(i - 3)].includes("X") && player._array[i - 2].includes(" /")) {
+          // st sp
+          if (player._array[9] == ["X", "X", "X"]) {
+            player._currentscore += 50;
+          } else if (player._array[9][0] == "X" && player._array[9][1] == "X" && !player._array[9][2] == "X") {
+            player._currentscore += 40 + player._array[9][2];
+          } else if (player._array[9][1] == " /" && player._array[9][2] == "X") {
+            player._currentscore += player._array[9][0] * 3 + player._array[9][1] + 10;
+          } else if (player._array[9][0] == "X" && player._array[9][2] == " /") {
+            player._currentscore += 30 + player._array[9][1] + player._array[9][1]
+          } else if (player._array[9][0] == "X" && !player._array[9][1] == "X" && !player._array[9][2] == " /" && !player._array[9][2] == "X") {
+            player._currentscore += 30 + player._array[9][1] + player._array[9][2]
+          } else if (player._array[9][1] == " /" && !player._array[9][2] == "X") {
+            player._currentscore += player._array[9][0] * 3 + player._array[9][1] + player._array[9][2]
+          } else {
+            player._currentscore += player._array[9][0] * 3 + player._array[9][1]
+          };
+        } else if (!player._array[(i - 3)].includes("X") && player._array[i - 2].includes("X")) {
+          //norm st
+          //sp st
+          if (player._array[9] == ["X", "X", "X"]) {
+            player._currentscore += 50;
+          } else if (player._array[9][0] == "X" && player._array[9][1] == "X" && !player._array[9][2] == "X") {
+            player._currentscore += 40 + player._array[9][2];
+          } else if (player._array[9][1] == " /" && player._array[9][2] == "X") {
+            player._currentscore += player._array[9][0] * 2 + player._array[9][1] * 2 + 10;
+          } else if (player._array[9][0] == "X" && player._array[9][2] == " /") {
+            player._currentscore += 20 + player._array[9][1] + player._array[9][2]
+          } else if (player._array[9][0] == "X" && !player._array[9][1] == "X" && !player._array[9][2] == " /" && !player._array[9][2] == "X") {
+            player._currentscore += 20 + player._array[9][1] + player._array[9][2]
+          } else if (player._array[9][1] == " /" && !player._array[9][2] == "X") {
+            player._currentscore += player._array[9][0] * 2 + player._array[9][1] + player._array[9][2]
+          } else {
+            player._currentscore += player._array[9][0] * 2 + player._array[9][1]
+          };
+        } else if (player._array[(i - 2)].includes(" /") || (player._array[(i - 3)].includes("X") && !player._array[i - 2].includes(" /") && !player._array[i - 2].includes("X"))) {
+          // norm sp
+          // sp sp
+          // st norm
+          if (player._array[9] == ["X", "X", "X"]) {
+            player._currentscore += 40;
+          } else if (player._array[9][0] == "X" && player._array[9][1] == "X" && !player._array[9][2] == "X") {
+            player._currentscore += 30 + player._array[9][2];
+          } else if (player._array[9][1] == " /" && player._array[9][2] == "X") {
+            player._currentscore += player._array[9][0] * 2 + player._array[9][1] + player._array[9][2];
+          } else if (player._array[9][0] == "X" && player._array[9][2] == " /") {
+            player._currentscore += 20 + player._array[9][1] + player._array[9][2]
+          } else if (player._array[9][0] == "X" && !player._array[9][1] == "X" && !player._array[9][2] == " /" && !player._array[9][2] == "X") {
+            player._currentscore += 20 + player._array[9][1] + player._array[9][2]
+          } else if (player._array[9][1] == " /" && !player._array[9][2] == "X") {
+            player._currentscore += player._array[9][0] * 2 + player._array[9][1] + player._array[9][2]
+          } else {
+            player._currentscore += player._array[9][0] * 2 + player._array[9][1]
+          };
+        } else if (!player._array[(i - 3)].includes(" /") && !player._array[(i - 3)].includes("X") && player._array[i - 2].includes(" /") && player._array[i - 2].includes("X")) {
+          //norm norm
+          if (player._array[9] == ["X", "X", "X"]) {
+            player._currentscore += 30;
+          } else if (player._array[9][0] == "X" && player._array[9][1] == "X" && !player._array[9][2] == "X") {
+            player._currentscore += 20 + player._array[9][2];
+          } else if (player._array[9][1] == " /" && player._array[9][2] == "X") {
+            player._currentscore += player._array[9][0] + player._array[9][1] + 10;
+          } else if (player._array[9][0] == "X" && player._array[9][2] == " /") {
+            player._currentscore += 10 + player._array[9][1] + player._array[9][2]
+          } else if (player._array[9][0] == "X" && !player._array[9][1] == "X" && !player._array[9][2] == " /" && !player._array[9][2] == "X") {
+            player._currentscore += 10 + player._array[9][1] + player._array[9][2]
+          } else if (player._array[9][1] == " /" && !player._array[9][2] == "X") {
+            player._currentscore += player._array[9][0] + player._array[9][1] + player._array[9][2]
+          } else {
+            player._currentscore += player._array[9][0] + player._array[9][1]
+          };
+        }
       }
     }
-
   }
 
 }
