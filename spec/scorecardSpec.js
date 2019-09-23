@@ -65,16 +65,6 @@ describe('Scorecard', function () {
       expect(player._currentscore).toEqual(60)
     })
 
-    it('rolling a perf game gives you 300 points', function () {
-      for (let i = 0; i < 9; i++) {
-        scorecard.frameAdd(player, 10, 0)
-        scorecard.scoreTracker(player, player._array.length)
-      }
-      scorecard.frameTenAdd(player, 10, 10, 10)
-      scorecard.frameTenTracker(player)
-      expect(player._currentscore).toEqual(300)
-    })
-
   });
 
   describe('Spares', function () {
@@ -91,19 +81,6 @@ describe('Scorecard', function () {
       scorecard.frameAdd(player, 2, 5)
       scorecard.scoreTracker(player, player._array.length)
       expect(player._currentscore).toEqual(19)
-    })
-  });
-
-  describe('Final Frame', function () {
-
-    it('allows you to enter 3 scores for frame10', function () {
-      for (let i = 0; i < 9; i++) {
-        scorecard.frameAdd(player, 1, 0)
-        scorecard.scoreTracker(player, player._array.length)
-      }
-      scorecard.frameTenAdd(player, 5, 0, 0)
-      scorecard.frameTenTracker(player)
-      expect(player._currentscore).toEqual(24)
     })
   });
 

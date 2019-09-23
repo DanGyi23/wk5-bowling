@@ -101,14 +101,15 @@ Scorecard = function () {
         player._array.push(["X", "X", "X"])
       };
     };
-    console.log(player._array)
   }
 
   Scorecard.prototype.frameTenTracker = function (player) {
-    for (j = 0; j < player._array[9].length; j++) {
       // st st
       if (player._array[7].includes("X") && player._array[8].includes("X")) {
-        if (player._array[9] == ["X","X","X"]) {
+        console.log(player._array[7])
+        console.log(player._array[8])
+        console.log(player._array[9])
+        if (player._array[9][0] == "X" && player._array[9][1] == "X" && player._array[9][2] == "X") {
           player._currentscore += 60;
         } else if (player._array[9][0] == "X" && player._array[9][1] == "X" && !player._array[9][2] == "X") {
           player._currentscore += 50 + player._array[9][2];
@@ -195,9 +196,7 @@ Scorecard = function () {
           player._currentscore += player._array[9][0] + player._array[9][1]
         };
       }
-    }
     return player._currentscore
-
   }
 
 }
