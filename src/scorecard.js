@@ -126,7 +126,7 @@ Scorecard = function () {
         };
       } else if (player._array[7].includes("X") && player._array[8].includes(" /")) {
         // st sp
-        if (player._array[9] == ["X", "X", "X"]) {
+        if (player._array[9][0] == "X" && player._array[9][1] == "X" && player._array[9][2] == "X") {
           player._currentscore += 50;
         } else if (player._array[9][0] == "X" && player._array[9][1] == "X" && !player._array[9][2] == "X") {
           player._currentscore += 40 + player._array[9][2];
@@ -144,7 +144,7 @@ Scorecard = function () {
       } else if (!player._array[7].includes("X") && player._array[8].includes("X")) {
         //norm st
         //sp st
-        if (player._array[9] == ["X", "X", "X"]) {
+        if (player._array[9][0] == "X" && player._array[9][1] == "X" && player._array[9][2] == "X") {
           player._currentscore += 50;
         } else if (player._array[9][0] == "X" && player._array[9][1] == "X" && !player._array[9][2] == "X") {
           player._currentscore += 40 + player._array[9][2];
@@ -163,7 +163,7 @@ Scorecard = function () {
         // norm sp
         // sp sp
         // st norm
-        if (player._array[9] == ["X", "X", "X"]) {
+        if (player._array[9][0] == "X" && player._array[9][1] == "X" && player._array[9][2] == "X") {
           player._currentscore += 40;
         } else if (player._array[9][0] == "X" && player._array[9][1] == "X" && !player._array[9][2] == "X") {
           player._currentscore += 30 + player._array[9][2];
@@ -178,9 +178,9 @@ Scorecard = function () {
         } else {
           player._currentscore += player._array[9][0] * 2 + player._array[9][1]
         };
-      } else if (!player._array[7].includes(" /") && !player._array[7].includes("X") && player._array[8].includes(" /") && player._array[8].includes("X")) {
+      } else if (!player._array[7].includes(" /") && !player._array[7].includes("X") && !player._array[8].includes(" /") && !player._array[8].includes("X")) {
         //norm norm
-        if (player._array[9] == ["X", "X", "X"]) {
+        if (player._array[9][0] == "X" && player._array[9][1] == "X" && player._array[9][2] == "X") {
           player._currentscore += 30;
         } else if (player._array[9][0] == "X" && player._array[9][1] == "X" && !player._array[9][2] == "X") {
           player._currentscore += 20 + player._array[9][2];
